@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 import OnBoardingScreen from './src/screens/OnBoardingScreen';
 import PaywallScreen from './src/screens/PaywallScreen';
-import MainScreen from './src/screens/MainScreen';
+import MainScreen from './src/screens/MainScreen/MainScreen';
 import { useSubscriptionStore } from './src/stores/store';
 
 const Stack = createNativeStackNavigator();
