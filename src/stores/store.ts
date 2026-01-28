@@ -2,14 +2,9 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface SubscriptionStore {
-  isSubscribed: boolean;
-  subscriptionType: 'month' | 'year' | null;
-  subscribe: (type: 'month' | 'year') => void;
-  unsubscribe: () => void;
-}
+import {TypesSubscriptionStore} from './types'
 
-export const useSubscriptionStore = create<SubscriptionStore>()(
+export const useSubscriptionStore = create<TypesSubscriptionStore>()(
   persist(
     (set) => ({
       isSubscribed: false,

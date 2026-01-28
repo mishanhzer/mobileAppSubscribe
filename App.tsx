@@ -4,8 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet, Text } from 'react-native';
 import { useEffect, useState } from 'react';
 
-import OnBoardingScreen from './src/screens/OnBoardingScreen';
-import PaywallScreen from './src/screens/PaywallScreen';
+import OnBoardingScreen from './src/screens/OnBoardingScreen/OnBoardingScreen';
+import PaywallScreen from './src/screens/PaywallScreen/PaywallScreen';
 import MainScreen from './src/screens/MainScreen/MainScreen';
 import { useSubscriptionStore } from './src/stores/store';
 
