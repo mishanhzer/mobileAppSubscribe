@@ -1,19 +1,21 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useSubscriptionStore } from '../../stores/store'; // Импортируем store
+import { useSubscriptionStore } from '../../stores/store';
 
-import { TypeSubscribe } from './TypeSubscribe/TypeSubscribe'
-import { PremiumContent } from './PremiumContent/PremiumContent'
+import { Header } from './components/Header/Header'
+import { TypeSubscribe } from './components/TypeSubscribe/TypeSubscribe'
+import { PremiumContent } from './components/PremiumContent/PremiumContent'
+import { ButtonExit } from './components/ButtonExit/ButtonExit'
 
 import { styles } from './styles'
 
 export default function MainScreen() {
   const navigation = useNavigation();
-  const { subscriptionType, unsubscribe } = useSubscriptionStore(); // Берём из store
+  const { subscriptionType, unsubscribe } = useSubscriptionStore();
 
   const resetApp = () => {
-    unsubscribe(); // Используем метод из store
+    unsubscribe();
     navigation.reset({
       index: 0,
       routes: [{ name: 'OnBoarding' as never }],
@@ -22,15 +24,14 @@ export default function MainScreen() {
 
   // Форматируем тип подписки для отображения
   const subscriptionTypeText = subscriptionType === 'month'
-    ? 'месячная'
+    ? ' месячная'
     : subscriptionType === 'year'
-      ? 'годовая'
-      : 'неизвестно';
+      ? ' годовая'
+      : ' неизвестно';
 
   return (
     <View style={styles.container}>
-      <Text style={styles.emoji}>🎉</Text>
-      <Text style={styles.title}>Вы внутри!</Text>
+      <Header />
 
       {/* Показываем какая у вас подписка */}
       <TypeSubscribe
@@ -38,17 +39,15 @@ export default function MainScreen() {
         subscriptionTypeText={subscriptionTypeText} />
 
       <Text style={styles.text}>
-        Это главный экран приложения.{'\n'}Сюда попадают только пользователи с активной подпиской.
+        Это главный экран приложения.{'\n'}
+        Сюда попадают только пользователи с активной подпиской.
       </Text>
 
       {/* Какие плюшки у вас за подписку*/}
       <PremiumContent />
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={resetApp}>
-        <Text style={styles.buttonText}>Выйти</Text>
-      </TouchableOpacity>
+      {/* Кнопка - Выйти */}
+      <ButtonExit resetApp={resetApp} />
     </View>
   );
 }

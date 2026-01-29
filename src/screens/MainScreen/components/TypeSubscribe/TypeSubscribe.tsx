@@ -7,7 +7,11 @@ export const TypeSubscribe = ({ subscriptionType, subscriptionTypeText }: TypesT
   return (
     <View style={styles.subscriptionInfo}>
       <Text style={styles.subscriptionText}>
-        Ваша подписка: <Text style={styles.subscriptionHighlight}>{subscriptionTypeText}</Text>
+        Ваша подписка:
+        <Text
+          style={styles.subscriptionHighlight}>
+          {subscriptionTypeText}
+        </Text>
       </Text>
       {subscriptionType === 'year' && (
         <Text style={styles.discountBadge}>🎁 Экономия 33%!</Text>

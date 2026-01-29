@@ -8,7 +8,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useSubscriptionStore } from '../../stores/store';
 
-import { SubscribeBlock } from './SubscribeBlock/SubscribeBlock'
+import { SubscribeBlock } from './components/SubscribeBlock/SubscribeBlock'
 
 import { styles } from './styles'
 
